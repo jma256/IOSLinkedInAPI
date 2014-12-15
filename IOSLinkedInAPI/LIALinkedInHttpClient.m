@@ -92,6 +92,15 @@
 
 }
 
+- (void)clearToken
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:LINKEDIN_TOKEN_KEY];
+    [userDefaults removeObjectForKey:LINKEDIN_EXPIRATION_KEY];
+    [userDefaults removeObjectForKeyForKey:LINKEDIN_CREATION_KEY];
+    [userDefaults synchronize];
+}
+
 - (void)getAuthorizationCode:(void (^)(NSString *))success cancel:(void (^)(void))cancel failure:(void (^)(NSError *))failure {
   LIALinkedInAuthorizationViewController *authorizationViewController = [[LIALinkedInAuthorizationViewController alloc]
       initWithApplication:
