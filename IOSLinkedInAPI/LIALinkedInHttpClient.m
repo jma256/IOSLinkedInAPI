@@ -97,7 +97,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:LINKEDIN_TOKEN_KEY];
     [userDefaults removeObjectForKey:LINKEDIN_EXPIRATION_KEY];
-    [userDefaults removeObjectForKeyForKey:LINKEDIN_CREATION_KEY];
+    [userDefaults removeObjectForKey:LINKEDIN_CREATION_KEY];
     [userDefaults synchronize];
 }
 
