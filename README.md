@@ -1,8 +1,13 @@
 IOSLinkedInAPI
 ==============
+
+*Note:* As of the 12´ May 2015 LinkedIn applied restrictions to API usage for all non partners:
+See: https://developer.linkedin.com/blog/posts/2015/developer-program-changes
+
+----------------------------------------------------------
 A small non intrusive library that makes it easy to authenticate and authorize against LinkedIn using OAuth2.
 The API uses a UIWebView to authenticate against LinkedIn.
- 
+
 <p align="center" >
   <img src="https://raw.github.com/jeyben/IOSLinkedInAPI/master/gh-pages/authenticate-example-iphone.png" alt="Authentication" title="Authentication" height="417" width="207">
 </p>
@@ -21,7 +26,7 @@ How To Get Started
 ------------------
 The library can be fetched as a Pod from [cocoapods](http://cocoapods.org/?q=ioslinkedinapi)
 
-If you aren't using Cocoapods you can always download the libary and import the files from the folder IOSLinkedInAPI into your existing project.
+If you aren't using CocoaPods you can always download the libary and import the files from the folder IOSLinkedInAPI into your existing project.
 
 Example Code
 ------------
