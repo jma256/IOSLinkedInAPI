@@ -75,19 +75,19 @@
 
 #ifdef isSessionManager // check if should use AFHTTPSessionManager or AFHTTPRequestOperationManager
     [self POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+
         [self storeCredentials:responseObject];
         success(responseObject);
-        
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
 #else
       [self POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          
+
           [self storeCredentials:responseObject];
           success(responseObject);
-          
+
       }  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
       }];
@@ -98,10 +98,10 @@
 - (void)storeCredentials:(id _Nullable)responseObject {
     NSString *accessToken = [responseObject objectForKey:@"access_token"];
     NSTimeInterval expiration = [[responseObject objectForKey:@"expires_in"] doubleValue];
-    
+
     // store credentials
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
+
     [userDefaults setObject:accessToken forKey:LINKEDIN_TOKEN_KEY];
     [userDefaults setDouble:expiration forKey:LINKEDIN_EXPIRATION_KEY];
     [userDefaults setDouble:[[NSDate date] timeIntervalSince1970] forKey:LINKEDIN_CREATION_KEY];
@@ -149,5 +149,13 @@
   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)clearToken
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:LINKEDIN_TOKEN_KEY];
+    [userDefaults removeObjectForKey:LINKEDIN_EXPIRATION_KEY];
+    [userDefaults removeObjectForKey:LINKEDIN_CREATION_KEY];
+    [userDefaults synchronize];
+}
 
 @end

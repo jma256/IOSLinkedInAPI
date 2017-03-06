@@ -95,4 +95,6 @@
  **/
 - (void)getAuthorizationCode:(void (^)(NSString *))success cancel:(void (^)(void))cancel failure:(void (^)(NSError *))failure;
 
+- (void)clearToken;
+
 @end
